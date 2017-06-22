@@ -1,0 +1,42 @@
+.ch-grid {
+	
+    padding:3%;
+    margin:2% auto;
+    width: 110%;
+    left: -10%;
+	
+display: block;
+text-align: center;
+	
+
+}
+
+
+.ch-grid:after,
+.ch-item:before 
+{
+	
+content: '';
+    
+display: table;
+}
+
+
+.ch-grid:after {
+	
+clear: both;
+}
+
+.ch-grid li 
+{
+	
+width: 200px;
+	
+height: 200px;
+
+position: relative;
+left: -5%;
+display: inline-block;
+	
+margin: 10px;
+}

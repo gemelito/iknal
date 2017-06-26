@@ -1,9 +1,15 @@
 <?php
 	require_once("classes/Config.php");
 	require_once("classes/Permission.php");
+	require_once("classes/Student.php");
 	$permission = new Permission();
 	$permission->IsStudent();
 
+	$student = new Student();
+	$getdegrees = $student->GetDegrees();
+	while($degrees = $student->Conexion()::RunArray($getdegrees)){
+		echo $degrees['carrera'];
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">

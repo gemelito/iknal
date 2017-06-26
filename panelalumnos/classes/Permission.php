@@ -10,11 +10,7 @@
 		public function __construct()
 		{
 			session_start();
-			$this->db = $this->Conexion();
-		}
-
-		public function Conexion(){
-			return new Config();
+			isset($_SESSION['user_name']) ? '' : header('location: ../index.php');
 		}
 
 		public function Set($field, $content)
@@ -34,7 +30,7 @@
 
 		public function IsStudent()
 		{
-			$_SESSION['user_level'] == 3 ? '' : header('localtion: ../index.php');
+			($_SESSION['user_level'] == 3) ? '' : header('localtion: ../index.php');
 		}
 	}
 ?>

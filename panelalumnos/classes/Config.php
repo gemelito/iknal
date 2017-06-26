@@ -13,7 +13,8 @@
 		public function __construct()
 		{
 			$this->db = new mysqli($this->date['host'], $this->date['user'], $this->date['password'], $this->date['db']);
-			#echo ($this->db) ? 'hay conexion' : 'no hay conexion'; 
+			$this->db->character_set_name();
+            $this->db->set_charset('utf8');
 		}
 
 		public function QueryReturn($query){
@@ -22,7 +23,8 @@
 
 		public function RunArray($array)
 		{
-			return $this->db->mysqli_fecth_array($array);
+			return mysqli_fetch_array($array);
 		}
+
 	}
 ?>

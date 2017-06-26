@@ -7,9 +7,7 @@
 
 	$student = new Student();
 	$getdegrees = $student->GetDegrees();
-	while($degrees = $student->Conexion()::RunArray($getdegrees)){
-		echo $degrees['carrera'];
-	}
+	$conexion = $student->Conexion();
 ?>
 <!DOCTYPE html>
 <html lang="es">

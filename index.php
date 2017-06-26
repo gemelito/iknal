@@ -18,6 +18,8 @@ require_once("classes/Login.php");
 // so this single line handles the entire login process. in consequence, you can simply ...
 $login = new Login();
 
+
+// 1 = admin, 2 = teacher, 3 = studient
 // ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
@@ -27,6 +29,8 @@ if ($login->isUserLoggedIn() == true) {
     include ("config/conexion.php");    
     if ($_SESSION['user_name'] == 'admin'){
         header('location: admin/indexadmin.php');
+    }elseif($_SESSION['user_level'] == 3){
+        header('location: panelalumnos/index.php');
     }
 } else {
     // the user is not logged in. you can do whatever you want here.

@@ -17,16 +17,16 @@ define("DB_HOST", "localhost");
 /**
  * name of the database. please note: database and database table are not the same thing!
  */
-define("DB_NAME", "vinculacion");
+define("DB_NAME", "vinculacion2");
 
 /**
  * user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.
  * by the way, it's bad style to use "root". In a real application you should create a database user
  * that fits your needs.
  */
-define("DB_USER", "usrRamon");
+define("DB_USER", "root");
 
 /**
  * The password of the above user
  */
-define("DB_PASS", "amanecer");
+define("DB_PASS", "");

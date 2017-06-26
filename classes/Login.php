@@ -115,7 +115,7 @@ class Login
                 // escape the POST stuff
                 $this->user_name = $this->db_connection->real_escape_string($_POST['user_name']);
                 // database query, getting all the info of the selected user
-                $checklogin = $this->db_connection->query("SELECT user_id, user_name, user_email, user_password_hash FROM users WHERE user_name = '" . $this->user_name . "';");
+                $checklogin = $this->db_connection->query("SELECT user_id, user_name, user_email, user_password_hash, nivel FROM users WHERE user_name = '" . $this->user_name . "';");
 
                 // if this user exists
                 if ($checklogin->num_rows == 1) {
@@ -129,6 +129,7 @@ class Login
                         // write user data into PHP SESSION [a file on your server]
                         $_SESSION['user_name'] = $result_row->user_name;
                         $_SESSION['user_email'] = $result_row->user_email;
+                        $_SESSION['user_level'] = $result_row->nivel;
                        
                         $_SESSION['user_logged_in'] = 1;
                         //$_SESSION['nivel'] = $result_row->nivel;

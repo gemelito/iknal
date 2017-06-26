@@ -1,0 +1,13 @@
+$(document).ready(function(){
+	$(".button-collapse").sideNav({
+		menuWidth: 250,
+      	edge: 'left'
+	});
+	$(".dropdown-button").dropdown();
+    $('select').material_select();
+    $('.datepicker').pickadate({
+	    selectMonths: true, // Creates a dropdown to control month
+	    selectYears: 15 // Creates a dropdown of 15 years to control year
+	});
+	$('.collapsible').collapsible();
+});

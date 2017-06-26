@@ -26,5 +26,11 @@
 			return mysqli_fetch_array($array);
 		}
 
+		public function GetRowTotal($array)
+		{
+			return mysqli_num_rows($array);
+			
+		}
+
 	}
 ?>

@@ -35,7 +35,7 @@
 		      <div class="collapsible-body blue-grey darken-4" style="padding: 0;">
 		      	<ul>
 		      		<?php while($degree = $conexion::RunArray($getdegrees)){ ?>
-		      			<li><a href="projects/list.php" class="waves-effect white-text active"><?php echo substr($degree['carrera'], 15); ?> </a></li>
+		      			<li><a href="../projects/list.php?degree=<? echo $degree['carrera'];?>" class="waves-effect white-text active"><?php echo substr($degree['carrera'], 15); ?> </a></li>
 		      		<?php } ?>
 		      	</ul>
 		      </div>

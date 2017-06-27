@@ -21,6 +21,10 @@
 			return $this->db->query($query);
 		}
 
+		public function Query(){
+			$this->db->query($query);
+		}
+
 		public function RunArray($array)
 		{
 			return mysqli_fetch_array($array);
@@ -28,8 +32,7 @@
 
 		public function GetRowTotal($array)
 		{
-			return mysqli_num_rows($array);
-			
+			return mysqli_num_rows($array);			
 		}
 
 	}

@@ -5,6 +5,7 @@
 		private $db;
 
 		private $degree;
+		private $user_name;
 
 		private $titulo_proyecto;
 
@@ -16,9 +17,31 @@
 			return new Config();
 		}
 
-		public function Set($field, $content)
+		public function Set($attribut, $content)
 		{
-			$this->$field = $content;
+			$this->$attribut = $content;
+		}
+
+		public function GetInformation()
+		{
+			$query = "SELECT alumno.*, users.* FROM alumno
+					INNER JOIN users ON users.Id_alumn = alumno.id_alumno
+					WHERE users.user_name = '{$this->user_name}' ";
+			$result = $this->db->QueryReturn($query);
+			return $result;
+			$this->db->CloseConexion();
+		}
+
+		public function GetProject(){
+			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.*, users.* FROM proyecto
+					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
+					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
+					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto 
+					WHERE users.user_name = '{$this->user_name}' ";
+			$result = $this->db->QueryReturn($query);
+			$objects = $result->fetch_object();
+			return $objects;
+			$this->db->CloseConexion();
 		}
 
 		public function GetDegrees()

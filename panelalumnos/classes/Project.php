@@ -42,6 +42,10 @@
 			$this->db = $this->Conexion();
 		}
 
+		public function Conexion(){
+			return new Config();
+		}
+
 		public function Set($attribute, $content)
 		{
 			$this->$atrribute = $content;
@@ -49,42 +53,42 @@
 
 		public function Create()
 		{
-			$query = "INSERT INTO proyecto(matricula ,verano_proyecto, lugar_proyecto,titulo_proyecto, areadesarrollo_proyecto, tipo_proyecto,estado_proyecto,director_proyecto,asesor1_proyecto,asesor2_proyecto, suplente_proyecto,modalidad_proyecto,equipo_proyecto) VALUES('{$this->matricula}','{$this->verano}','{$this->lugar}','{$this->titulo}','{$this->area}','{$this->tipo}','{$this->estado}','{$this->director}','{$this->asesor1}','{$this->asesor2}','{$this->suplente}','{$this->modalidad}','{$this->equipo}' ";
+			$query = "INSERT INTO proyecto(matricula ,verano_proyecto, lugar_proyecto,titulo_proyecto, areadesarrollo_proyecto, tipo_proyecto,estado_proyecto,director_proyecto,asesor1_proyecto,asesor2_proyecto, suplente_proyecto,modalidad_proyecto,equipo_proyecto) VALUES('{$this->matricula}','{$this->verano}','{$this->lugar}','{$this->titulo}','{$this->area}','{$this->tipo}','{$this->estado}','{$this->director}','{$this->asesor1}','{$this->asesor2}','{$this->suplente}','{$this->modalidad}','{$this->equipo}') ";
 			$result = $this->db->Query($query);
-			if ($result):
+			if ($result){
 				$this->messages[] = "Se ha agregado el proyecto";
-			else:
+			}else{
 				$this->errors[] = "No se puedo agregar el proyecto";
-			endif
+			}
 		}
 
 		public function Read()
 		{
-			$query = "SELECT * FROM proyecto WHERE titulo_proyecto = '$this->titulo' ";
+			$query = "SELECT * FROM proyecto WHERE titulo_proyecto = '{$this->titulo}' ";
 			$result = $this->db->QueryReturn($query);
 			return $result;
 		}
 
 		public function Update()
 		{
-			$query = "UPDATE proyecto SET matricula='{$this->matricula}', verano_proyecto='{$this->verano}', lugar_proyecto='{$this->lugar}', titulo_proyecto='{$this->titulo}', areadesarrollo_proyecto='{$this->area}', tipo_proyecto='{$this->tipo}', estado_proyecto='{$this->estado}', director_proyecto='{$this->director}', asesor1_proyecto='{$this->asesor1}', asesor2_proyecto='{$this->asesor2}', suplente_proyecto='{$this->suplente}', modalidad_proyecto='{$this->modalidad}', equipo_proyecto='{$this->equipo}'  where  matricula='{$this->matricula}' ";
+			$query = "UPDATE proyecto SET matricula='{$this->matricula}', verano_proyecto='{$this->verano}', lugar_proyecto='{$this->lugar}', titulo_proyecto='{$this->titulo}', areadesarrollo_proyecto='{$this->area}', tipo_proyecto='{$this->tipo}', estado_proyecto='{$this->estado}', director_proyecto='{$this->director}', asesor1_proyecto='{$this->asesor1}', asesor2_proyecto='{$this->asesor2}', suplente_proyecto='{$this->suplente}', modalidad_proyecto='{$this->modalidad}', equipo_proyecto='{$this->equipo}' WHERE  matricula='{$this->matricula}' ";
 			$result = $this->db->Query($query);
-			if ($result):
+			if ($result){
 				$this->messages[] = "Se ha actulizado el proyecto";
-			else:
+			}else{
 				$this->errors[] = "No se puedo actualizar el proyecto";
-			endif
+			}
 		}
 
 		public function Delete()
 		{
 			$query = "SELECT * FROM proyecto WHERE titulo_proyecto = '$this->titulo_proyecto' AND matricula = '{$this->matricula}' ";
 			$result = $this->db->QueryReturn($query);
-			if ($result):
+			if ($result){
 				$this->messages[] = "Se ha eliminado el proyecto";
-			else:
+			}else{
 				$this->errors[] = "No se puedo elimnar el proyecto";
-			endif
+			}
 		}
 
 	}

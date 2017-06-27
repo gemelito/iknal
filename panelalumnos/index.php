@@ -2,12 +2,17 @@
 	require_once("classes/Config.php");
 	require_once("classes/Permission.php");
 	require_once("classes/Student.php");
+	require_once("classes/Project.php");
 	$permission = new Permission();
 	$permission->IsStudent();
-
 	$student = new Student();
+	$student->Set("user_name", $_SESSION['user_name']);
+	$getinformation = $student->GetInformation();
 	$getdegrees = $student->GetDegrees();
 	$conexion = $student->Conexion();
+
+	$project = new Project();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,6 +26,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
+	<?php echo $getinformation->nombre_alumno; ?>
 	<?php include "header.php"; ?>
 	<main>
 		<?php include "cards.php"; ?>

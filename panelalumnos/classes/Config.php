@@ -35,5 +35,10 @@
 			return mysqli_num_rows($array);			
 		}
 
+		public function CloseConexion()
+		{
+			$this->db->mysqli_close();
+		}
+
 	}
 ?>

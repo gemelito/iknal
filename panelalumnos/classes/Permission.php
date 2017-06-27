@@ -14,9 +14,9 @@
 			isset($_SESSION['user_name']) ? '' : header('location: ../index.php');
 		}
 
-		public function Set($field, $content)
+		public function Set($attribute, $content)
 		{
-			$this->$field = $content;
+			$this->$attribute = $content;
 		}
 
 		public function IsAdmin()

@@ -26,7 +26,6 @@
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
-	<?php echo $getinformation->nombre_alumno; ?>
 	<?php include "header.php"; ?>
 	<main>
 		<?php include "cards.php"; ?>

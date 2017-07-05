@@ -22,11 +22,11 @@
 				<img src="../images/bg.png" style="width: 100%;">
 			</div>
 			<a href="#!user"><img class="circle" src="../images/perfil.jpg"></a>
-			<a href="#!name" class='dropdown-button blue-grey-text text-darken-4' data-beloworigin="true" href='#' data-activates='user-dw'><span class=" name">Alumno<i class="material-icons" id="icon">arrow_drop_down</i></span></a>
+			<a href="#!name" class='dropdown-button blue-grey-text text-darken-4' data-beloworigin="true" href='#' data-activates='user-dw'><span class=" name"><?php echo $getinformation->nombre_alumno,' ',$getinformation->apellidop_alumno; ?><i class="material-icons" id="icon">arrow_drop_down</i></span></a>
 			<a href="#!email" class="top-space"><span class="white-text email">Matricula</span></a>
 		</div></li>
 		<li><a href="../index.php"><i class="material-icons">home</i>Inicio</a></li>
-		<li><a href="index.php"><i class="material-icons">work</i>Mi proyecto</a></li>
+		<li><a href="my.php"><i class="material-icons">work</i>Mi proyecto</a></li>
 		
 		<ul class="collapsible" data-collapsible="accordion">
 		    <li>

@@ -6,9 +6,11 @@
 	$permission->IsStudent();
 
 	$student = new Student();
+	$student->Set("user_name", $_SESSION['user_name']);
+	$getinformation = $student->GetInformation();
 	$conexion = $student->Conexion();
 	$getdegrees = $student->GetDegrees();
-	$student->Set("user_name", $_SESSION['user_name']);
+	$student->Set("enrollment", $getinformation->matricula_alumno);
 	$myproject = $student->GetProject();
 ?>
 <!DOCTYPE html>
@@ -25,36 +27,25 @@
 		            <div class="card-content grey-text text-darken-3">
 		              	<div class="row">
 		              		<div class="col l9 m8 s12">
-		              			<span class="card-title text-400">Proyectos</span>
-		              			<span class="text-300">Total proyectos: <?php echo $conexion::GetRowTotal($projects);?></span>
+		              			<span class="card-title text-400">Mi Proyecto</span>
 		              		</div>
-		              		<div class="col l3 m4 s12">
-		              			<form action="list.php" method="GET">
-							        <div class="input-field">
-							          <input id="search" type="search" name="search" class="blue-grey darken-4" required>
-							          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-							          <input type="hidden" name="degree" value="<?php echo $_GET['degree']; ?>">
-							        </div>
-							    </form>
-		              		</div>
+		              		<
 		              	</div>
 		              	<table class="table highlight centered responsive-table top-space">
 							<thead>
 								<tr>
 									<th>#</th>
 									<th>Proyecto</th>
-									<th>Alumno</th>
 									<th>Estatus del verano</th>
 									<th>Verano</th>
 									<th>Comunidad</th>
 								</tr>
 							</thead>
 							<tbody>
-								<?php while($project = $conexion::RunArray($projects)){ ?>
+								<?php while($project = $conexion::RunArray($myproject)){ ?>
 									<tr>
 										<th scope="row"><?php echo $project['id_proyecto']; ?></th>
 										<td><?php echo $project['titulo_proyecto']; ?></td>
-										<td><?php echo $project['nombre_alumno']; $project['apellidop_alumno']; ?></td>
 										<td><?php echo $project['estado_proyecto']; ?></td>
 										<td><?php echo $project['verano_proyecto']; ?></td>
 										<td><?php echo $project['municipio_localidad']; ?></td>

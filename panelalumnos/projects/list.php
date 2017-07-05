@@ -6,6 +6,8 @@
 	$permission->IsStudent();
 
 	$student = new Student();
+	$student->Set("user_name", $_SESSION['user_name']);
+	$getinformation = $student->GetInformation();
 	$getdegrees = $student->GetDegrees();
 	$conexion = $student->Conexion();
 	$student->Set("degree", $_GET['degree']);

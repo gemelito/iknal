@@ -6,7 +6,8 @@
 
 		private $degree;
 		private $user_name;
-
+		private $name;
+		private $enrollment;
 		private $titulo_proyecto;
 
 		public function __construct(){
@@ -28,19 +29,19 @@
 					INNER JOIN users ON users.Id_alumn = alumno.id_alumno
 					WHERE users.user_name = '{$this->user_name}' ";
 			$result = $this->db->QueryReturn($query);
-			return $result;
+			$objects = $result->fetch_object();
+			return $objects;
 			$this->db->CloseConexion();
 		}
 
 		public function GetProject(){
-			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.*, users.* FROM proyecto
+			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.* FROM proyecto
 					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
 					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
 					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto 
-					WHERE users.user_name = '{$this->user_name}' ";
+					WHERE proyecto.matricula = '{$this->enrollment}' ";
 			$result = $this->db->QueryReturn($query);
-			$objects = $result->fetch_object();
-			return $objects;
+			return $result;
 			$this->db->CloseConexion();
 		}
 

@@ -17,7 +17,7 @@ define("DB_HOST", "localhost");
 /**
  * name of the database. please note: database and database table are not the same thing!
  */
-define("DB_NAME", "vinculacion2");
+define("DB_NAME", "vinculacion");
 
 /**
  * user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.

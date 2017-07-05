@@ -5,7 +5,7 @@
 				"host" => "localhost",
 				"user" => "root",
 				"password" => "",
-				"db" => "vinculacion2"
+				"db" => "vinculacion"
 			);
 
 		private $db;
@@ -32,7 +32,7 @@
 
 		public function GetRowTotal($array)
 		{
-			return mysqli_num_rows($array);			
+			return mysqli_num_rows($array);
 		}
 
 		public function CloseConexion()

@@ -28,7 +28,7 @@
 <body>
 	<?php include "header.php"; ?>
 	<main>
-		<?php include "cards.php"; ?>
+		<?php include "formatos.php"; ?>
 	</main>
 	<?php include "footer.php"; ?>
 </body>

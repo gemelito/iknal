@@ -27,7 +27,9 @@
 		</div></li>
 		<li><a href="index.php"><i class="material-icons">home</i>Inicio</a></li>
 		<li><a href="projects/my.php"><i class="material-icons">work</i>Mi proyecto</a></li>
-		
+		<li><a href="family/list.php"><i class="material-icons">domain</i>Mi famalia</a></li>
+		<li><a href="friends/list.php"><i class="material-icons">group</i>Mis amigos</a></li>
+
 		<ul class="collapsible" data-collapsible="accordion">
 		    <li>
 		      <div class="collapsible-header">
@@ -47,7 +49,7 @@
 			<li><a href="index.html">Inicio</a></li>
 			<li><a href="comite.html">comite de tesis</a></li>
 			<li><a href="perfil.php">Perfil</a></li>
-		</div>   
+		</div>
 	</ul>
 
 	<ul id='user-dw' class='dropdown-content'>

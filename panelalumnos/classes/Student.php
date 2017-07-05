@@ -34,11 +34,15 @@
 			$this->db->CloseConexion();
 		}
 
+		#public function GetFamily(){
+		#	$query = ""
+		#}
+
 		public function GetProject(){
 			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.* FROM proyecto
 					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
 					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
-					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto 
+					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
 					WHERE proyecto.matricula = '{$this->enrollment}' ";
 			$result = $this->db->QueryReturn($query);
 			return $result;
@@ -57,7 +61,7 @@
 			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.* FROM proyecto
 					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
 					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
-					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto 
+					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
 					WHERE carrera.carrera = '{$this->degree}'";
 			$result = $this->db->QueryReturn($query);
 			return $result;
@@ -68,15 +72,10 @@
 			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.* FROM proyecto
 					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
 					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
-					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto 
+					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
 					WHERE carrera.carrera = '{$this->degree}' AND proyecto.titulo_proyecto LIKE '%".$this->titulo_proyecto."%' ";
 			$result = $this->db->QueryReturn($query);
 			return $result;
 		}
 	}
 ?>
-
-
-
-
-

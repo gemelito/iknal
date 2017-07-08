@@ -1,38 +1,28 @@
 <?php
-	/**
-	* Crear una clase con el nombre en iknal/panelalumnos/classes/Project.php
-	* Agregar las propiedades de la table proyecto y encapsular	
-	* Crear el constructor  
-	* Crear el metodo Set
-	* Hacer el Metodo Conexion y llamarlo desde el constructor
-	* Crear un CRUD
-	* Un metodo Create
-	* Un metodo Read
-	* Un metodo Update
-	* Un metodo Delete
-	*/
 
 	class Project
 	{
 		private $db;
 
+		private $degree;
+
 		private $matricula;
-        private $id_prof; 
-        private $nombre;  
-        private $apellidop;
-        private $apellidom;  
-    	private $verano;
-        private $lugar;
-        private $titulo;
-        private $area;
-        private $tipo;
-        private $estado;
-        private $director;
-        private $asesor1;
-        private $asesor2;
-        private $suplente;
-        private $modalidad;
-        private $equipo;
+    private $id_prof;
+    private $nombre;
+    private $apellidop;
+    private $apellidom;
+    private $verano;
+    private $lugar;
+    private $titulo;
+    private $area;
+    private $tipo;
+    private $estado;
+    private $director;
+    private $asesor1;
+  	private $asesor2;
+    private $suplente;
+    private $modalidad;
+    private $equipo;
 
 		public $errors = array();
 		public $messages = array();
@@ -48,7 +38,7 @@
 
 		public function Set($attribute, $content)
 		{
-			$this->$atrribute = $content;
+			$this->$attribute = $content;
 		}
 
 		public function Create()
@@ -71,12 +61,12 @@
 
 		public function Update()
 		{
-			$query = "UPDATE proyecto SET matricula='{$this->matricula}', verano_proyecto='{$this->verano}', lugar_proyecto='{$this->lugar}', titulo_proyecto='{$this->titulo}', areadesarrollo_proyecto='{$this->area}', tipo_proyecto='{$this->tipo}', estado_proyecto='{$this->estado}', director_proyecto='{$this->director}', asesor1_proyecto='{$this->asesor1}', asesor2_proyecto='{$this->asesor2}', suplente_proyecto='{$this->suplente}', modalidad_proyecto='{$this->modalidad}', equipo_proyecto='{$this->equipo}' WHERE  matricula='{$this->matricula}' ";
+			$query = "UPDATE proyecto SET matricula='{$this->matricula}', verano_proyecto='{$this->verano}', lugar_proyecto='{$this->lugar}', titulo_proyecto='{$this->titulo}', areadesarrollo_proyecto='{$this->area}', tipo_proyecto='{$this->tipo}', estado_proyecto='{$this->estado}', equipo_proyecto='{$this->equipo}' WHERE  matricula='{$this->matricula}' ";
 			$result = $this->db->Query($query);
-			if ($result){
-				$this->messages[] = "Se ha actulizado el proyecto";
+			if (!$result){
+				$this->messages[] = "Los datos se han actualizado correctamente";
 			}else{
-				$this->errors[] = "No se puedo actualizar el proyecto";
+				$this->errors[] = "Los datos no fueron actualizados correctamente";
 			}
 		}
 
@@ -89,6 +79,47 @@
 			}else{
 				$this->errors[] = "No se puedo elimnar el proyecto";
 			}
+		}
+
+		public function GetProject()
+		{
+			$query = "SELECT proyecto.*, profesor.*, localidad.* FROM proyecto
+							INNER JOIN profesor ON profesor.id_profesor = proyecto.director_proyecto
+							INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
+							WHERE matricula = '{$this->matricula}' ";
+			$result = $this->db->QueryReturn($query);
+			return $result;
+		}
+
+		public function GetEdit(){
+			$query = "SELECT * FROM proyecto WHERE matricula = '{$this->matricula}' ";
+			$result = $this->db->QueryReturn($query);
+			$objects = $result->fetch_object();
+			return $objects;
+		}
+
+		public function GetProjects()
+		{
+			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.*, estado_proyecto.* FROM proyecto
+					INNER JOIN estado_proyecto ON estado_proyecto.id_estado_proyecto = proyecto.estado_proyecto
+					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
+					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
+					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
+					WHERE carrera.carrera = '{$this->degree}'";
+			$result = $this->db->QueryReturn($query);
+			return $result;
+		}
+
+		public function SearchProjects()
+		{
+				$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.*, estado_proyecto.* FROM proyecto
+						INNER JOIN estado_proyecto ON estado_proyecto.id_estado_proyecto = proyecto.estado_proyecto
+						INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
+						INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
+						INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
+						WHERE carrera.carrera = '{$this->degree}' AND proyecto.titulo_proyecto LIKE '%".$this->titulo."%' ";
+				$result = $this->db->QueryReturn($query);
+				return $result;
 		}
 
 	}

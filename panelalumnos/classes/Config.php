@@ -21,7 +21,7 @@
 			return $this->db->query($query);
 		}
 
-		public function Query(){
+		public function Query($query){
 			$this->db->query($query);
 		}
 

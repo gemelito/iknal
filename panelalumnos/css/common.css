@@ -1,0 +1,84 @@
+/**************Common***************/
+/*Grosor*/
+.text-300 {
+  font-weight: 300 !important;
+}
+
+.text-400 {
+  font-weight: 400 !important;
+}
+
+.text-500 {
+  font-weight: 500 !important;
+}
+
+/*Tamaños*/
+.icon-size {
+  font-size: 4em !important;
+}
+
+/*Tamaño Texto*/
+.font-normal {
+  font-size: 1em !important;
+}
+
+.font-small {
+  font-size: 1.5em;
+}
+
+.font-medium {
+  font-size: 1.3em;
+}
+
+.font-large {
+  font-size: 3.2em;
+}
+
+/*Transiciones*/
+.card-transition {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.card-transition:hover {
+  background-color: #e65100 !important;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/*Alineamiento*/
+.top-space {
+  margin-top: 10px;
+}
+
+.top-medium {
+  margin-top: 40px;
+}
+
+/*Margenes*/
+.no-margin {
+  margin: 0px !important;
+}
+
+.margin-top-bottom {
+  margin: 5px 0px 5px 0px !important;
+}
+
+/*Paddings*/
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding {
+  padding: 15px !important;
+}
+
+.padding-top-navbar {
+  padding-top: 30px;
+}

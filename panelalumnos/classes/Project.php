@@ -7,22 +7,22 @@
 		private $degree;
 
 		private $matricula;
-    private $id_prof;
-    private $nombre;
-    private $apellidop;
-    private $apellidom;
-    private $verano;
-    private $lugar;
-    private $titulo;
-    private $area;
-    private $tipo;
-    private $estado;
-    private $director;
-    private $asesor1;
-  	private $asesor2;
-    private $suplente;
-    private $modalidad;
-    private $equipo;
+	    private $id_prof;
+	    private $nombre;
+	    private $apellidop;
+	    private $apellidom;
+	    private $verano;
+	    private $lugar;
+	    private $titulo;
+	    private $area;
+	    private $tipo;
+	    private $estado;
+	    private $director;
+	    private $asesor1;
+	  	private $asesor2;
+	    private $suplente;
+	    private $modalidad;
+	    private $equipo;
 
 		public $errors = array();
 		public $messages = array();
@@ -107,19 +107,23 @@
 					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
 					WHERE carrera.carrera = '{$this->degree}'";
 			$result = $this->db->QueryReturn($query);
-			return $result;
+			if ($result) {
+				return $result;
+			}
 		}
 
 		public function SearchProjects()
 		{
-				$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.*, estado_proyecto.* FROM proyecto
-						INNER JOIN estado_proyecto ON estado_proyecto.id_estado_proyecto = proyecto.estado_proyecto
-						INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
-						INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
-						INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
-						WHERE carrera.carrera = '{$this->degree}' AND proyecto.titulo_proyecto LIKE '%".$this->titulo."%' ";
-				$result = $this->db->QueryReturn($query);
+			$query = "SELECT proyecto.*, carrera.*, alumno.*, localidad.*, estado_proyecto.* FROM proyecto
+					INNER JOIN estado_proyecto ON estado_proyecto.id_estado_proyecto = proyecto.estado_proyecto
+					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
+					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
+					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
+					WHERE carrera.carrera = '{$this->degree}' AND proyecto.titulo_proyecto LIKE '%".$this->titulo."%' ";
+			$result = $this->db->QueryReturn($query);
+			if ($result) {
 				return $result;
+			}
 		}
 
 	}

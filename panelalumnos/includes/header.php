@@ -24,11 +24,28 @@
 				<img src="../images/bg.png" style="width: 100%;">
 			</div>
 			<a href="#!user"><img class="circle" src="../../images/alumno/<?php echo $getinformation->foto;?>"></a>
-			<a href="#!name" class='dropdown-button blue-grey-text text-darken-4' data-beloworigin="true" href='#' data-activates='user-dw'><span class=" name"><?php echo $getinformation->nombre_alumno,' ',$getinformation->apellidop_alumno; ?><i class="material-icons" id="icon">arrow_drop_down</i></span></a>
-			<a href="#!email" class="top-space"><span class="white-text email">Matricula</span></a>
+			<a href="#!name" class='dropdown-button blue-grey-text text-darken-4' data-beloworigin="true" href='#' data-activates='user-dw'><span class=" name"><?php echo $getinformation->nombre_alumno,' ',$getinformation->apellidop_alumno; ?><i class="material-icons" id="icon">arrow_drop_down</i></span></a><br>
 		</div></li>
 		<li><a href="../index.php"><i class="material-icons">home</i>Inicio</a></li>
-		<li><a href="../projects/my.php"><i class="material-icons">work</i>Mi proyecto</a></li>
+
+		<ul class="collapsible" data-collapsible="accordion">
+		    <li>
+          <a class="collapsible-header">
+            <i class="material-icons">work</i> Proyecto
+          </a>
+		      <div class="collapsible-body blue-grey darken-4" style="padding: 0;">
+		      	<ul>
+		      		<li>
+		      			<a href="../projects/my.php" class="waves-effect white-text active"><i class="material-icons white-text">class</i> Mi proyecto</a>
+		      		</li>
+		      		<li><a href="../commitee/my.php" class="waves-effect white-text active">
+		      			<i class="material-icons white-text">assignment_ind</i> Mi comité</a>
+		      		</li>
+		      	</ul>
+		      </div>
+		    </li>
+		</ul>
+
 		<li><a href="../family/list.php"><i class="material-icons">domain</i>Mi famalia</a></li>
 		<li><a href="../friends/list.php"><i class="material-icons">group</i>Mis amigos</a></li>
 

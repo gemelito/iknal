@@ -17,14 +17,16 @@
 	$conexion = $student->Conexion();
 
 	$project = new Project();
-	$project->Set("degree", $_GET['degree']);
+	if(isset($_GET['degree']) && is_string($_GET['degree']) && filter_input(INPUT_GET, 'degree'))
+		$project->Set("degree", $_GET['degree']);
 
-	if(isset($_GET['search'])):
+	if(isset($_GET['search'])){
 	  $project->Set("titulo", $_GET['search']);
 	  $getprojects = $project->SearchProjects();
-	else:
+	}else{
 	  $getprojects = $project->GetProjects();
-	endif
+	}
+	
 
 ?>
 <!DOCTYPE html>
@@ -42,16 +44,16 @@
 		              	<div class="row">
 		              		<div class="col l9 m8 s12">
 		              			<span class="card-title text-400">Proyectos</span>
-		              			<span class="text-300">Total de proyectos: <?php echo $conexion::GetRowTotal($getprojects);?></span>
+		              			<span class="text-300">Total de proyectos: <?php echo (!empty($getprojects)) ? $conexion::GetRowTotal($getprojects) : '0' ;?></span>
 		              		</div>
 		              		<div class="col l3 m4 s12">
 		              		<form action="list.php" method="GET">
-								        <div class="input-field">
-								          <input id="search" type="search" name="search" class="blue-grey darken-4 white-text" required>
-								          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-								          <input type="hidden" name="degree" value="<?php echo $_GET['degree']; ?>">
-								        </div>
-							    		</form>
+							    <div class="input-field">
+							        <input id="search" type="search" name="search" class="blue-grey darken-4 white-text" required>
+							        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+							        <input type="hidden" name="degree" value="<?php echo $_GET['degree']; ?>">
+							    </div>
+							</form>
 		              		</div>
 		              	</div>
 		              	<table class="table highlight centered responsive-table top-space">
@@ -66,7 +68,9 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php $num=1 ; while($project = $conexion::RunArray($getprojects)){ ?>
+								<?php 
+									if (!empty($getprojects)){
+										$num=1 ; while($project = $conexion::RunArray($getprojects)) { ?>
 										<tr>
 											<th><?php echo $num; $num++;?></th>
 											<td><?php echo $project['titulo_proyecto']; ?></td>
@@ -75,7 +79,8 @@
 											<td><?php echo $project['verano_proyecto']; ?></td>
 											<td><?php echo $project['municipio_localidad']; ?></td>
 										</tr>
-								<?php } ?>
+								<?php } 
+									} ?>
 							</tbody>
 						</table>
 		            </div>

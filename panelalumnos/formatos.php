@@ -111,7 +111,7 @@
 			<div class="card-panel green darken-1 padding z-depth-2  card-transition">
 				<div class="row no-margin">
 					<div class="col l12 m12 s12 no-padding white-text center-align">
-						<p class="text-500 margin-top-bottom">Formato de Ejemplo de llenado de Beca Manutención</p>
+						<p class="text-500 margin-top-bottom">Formato de llenado de Beca Manutención</p>
 					</div>
 					<div class="col l12 m12 s12 no-padding center-align">
 						<i class="material-icons icon-size white-text">insert_drive_file</i>

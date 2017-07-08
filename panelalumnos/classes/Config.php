@@ -35,6 +35,10 @@
 			return mysqli_num_rows($array);
 		}
 
+		public function ClearString($string){
+			return $this->db->real_escape_string($string);
+		}
+
 		public function CloseConexion()
 		{
 			$this->db->mysqli_close();

@@ -77,6 +77,10 @@ class Login
         if (isset($_GET["logout"])) {
             $this->doLogout();
         }
+
+        if (isset($_GET['success'])) {
+            $this->showUpdateAccount();
+        }
         // if user has an active session on the server
         elseif (!empty($_SESSION['user_name']) && ($_SESSION['user_logged_in'] == 1)) {
             $this->loginWithSessionData();
@@ -176,5 +180,12 @@ class Login
         return $this->user_is_logged_in;
 
 
+    }
+
+    public function showUpdateAccount(){
+        $_SESSION = array();
+        session_destroy();
+        $this->user_is_logged_in = false;
+        $this->messages[] = "La contraseña fue actualizada correctamente.";
     }
 }

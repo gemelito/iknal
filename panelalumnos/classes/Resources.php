@@ -38,6 +38,12 @@
 			$result = $this->db->QueryReturn($query);
 			return $result;
 		}
+
+		public function GetTeacher(){
+			$query = "SELECT * FROM profesor";
+			$result = $this->db->QueryReturn($query);
+			return $result;
+		}
 	}
 
 

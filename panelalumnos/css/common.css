@@ -56,7 +56,9 @@
 .top-space {
   margin-top: 10px;
 }
-
+.top-normal{
+  margin-top: 20px;
+}
 .top-medium {
   margin-top: 40px;
 }

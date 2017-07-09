@@ -20,6 +20,12 @@ $project = new Project();
 $project->Set("matricula", $getinformation->matricula_alumno);
 $getproject = $project->GetProject();
 
+$showmanager = $student->ShowManager($getinformation->matricula_alumno);
+$showadviser_1 = $student->ShowAdviser_1($getinformation->matricula_alumno);
+$showadviser_2 = $student->ShowAdviser_2($getinformation->matricula_alumno);
+$showadviser_3 = $student->ShowAdviser_3($getinformation->matricula_alumno);
+$showalternate = $student->ShowAlternate($getinformation->matricula_alumno);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,11 +54,11 @@ $getproject = $project->GetProject();
 		            <span class="card-title text-400">Mi Proyecto</span>
 		      		</div>
 		      		<?php
-								if($conexion->GetRowTotal($getproject) > 0){ ?>
-									<a href="edit.php" class="waves-effect waves-green btn blue"><i class="material-icons left">mode_edit</i>proyecto</a>
-							<?php }else{ ?>
-									<a href="new.php" class="waves-effect waves-green btn blue"><i class="material-icons left">add</i> <span>proyecto</span></a>
-							<?php } ?>
+						if($conexion->GetRowTotal($getproject) > 0){ ?>
+							<a href="edit.php" class="waves-effect waves-green btn blue"><i class="material-icons left">mode_edit</i>proyecto</a>
+						<?php }else{ ?>
+							<a href="new.php" class="waves-effect waves-green btn blue"><i class="material-icons left">add</i> <span>proyecto</span></a>
+					<?php } ?>
 		        </div>
 		        <table class="table highlight centered responsive-table top-space">
 							<thead>

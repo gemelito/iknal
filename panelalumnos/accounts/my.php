@@ -65,66 +65,66 @@
 
 									<h6><strong>Estado actual: <?php echo $getinformation->estado;?></strong></h6>
 									<div class="input-field">
-		                <select class="browser-default  required" name="estado">
-		                  <option value="" selected>Seleccione el estado.</option>
-		                  <?php while($state = $conexion::RunArray($getStates)){?>
-		                    <option value="<?php echo $state['Id_estado_alumno']?>"><?php echo $state['estado'] ?></option>
-		                  <?php } ?>
-		                </select>
-		              </div>
-		              <br>
+						<select class="browser-default  required" name="estado">
+						  <option value="" selected>Seleccione el estado.</option>
+						  <?php while($state = $conexion::RunArray($getStates)){?>
+							<option value="<?php echo $state['Id_estado_alumno']?>"><?php echo $state['estado'] ?></option>
+						  <?php } ?>
+						</select>
+					  </div>
+					  <br>
 
-		              <h6><strong>Lugar de Origen: <?php echo $getinformation->localidad,', ',$getinformation->municipio_localidad,', ',$getinformation->estado_localidad;?></strong></h6>
-		              <div class="input-field">
-		                  <select class="browser-default" required name="localidad" >
-		                    <option value="" selected>Seleccione el origen.</option>
-		                    <?php while($localidad = $conexion::RunArray($getLocations)){?>
-		                      <option value="<?php echo $localidad['id_localidad']?>"><?php echo $localidad['localidad'],', ',$localidad['municipio_localidad'],', ',$localidad['estado_localidad']; ?></option>
-		                    <?php } ?>
-		                  </select>
-		              </div>
-		              <br>
+					  <h6><strong>Lugar de Origen: <?php echo $getinformation->localidad,', ',$getinformation->municipio_localidad,', ',$getinformation->estado_localidad;?></strong></h6>
+					  <div class="input-field">
+						  <select class="browser-default" required name="localidad" >
+							<option value="" selected>Seleccione el origen.</option>
+							<?php while($localidad = $conexion::RunArray($getLocations)){?>
+							  <option value="<?php echo $localidad['id_localidad']?>"><?php echo $localidad['localidad'],', ',$localidad['municipio_localidad'],', ',$localidad['estado_localidad']; ?></option>
+							<?php } ?>
+						  </select>
+					  </div>
+					  <br>
 
-		              <h6><strong>Semestre actual: <?php echo $getinformation->semestres;?></strong></h6>
-		              <div class="input-field">
-		                <select class="browser-default" required name="semestre">
-		                  <option value="" selected>Seleccione el semestre.</option>
-		                  <?php while($semester = $conexion::RunArray($getSemesters)){?>
-		                    <option value="<?php echo $semester['Id_semestre']?>"><?php echo $semester['semestres'] ?></option>
-		                  <?php } ?>
-		               </select>
-		              </div>
-		              <br>
+					  <h6><strong>Semestre actual: <?php echo $getinformation->semestres;?></strong></h6>
+					  <div class="input-field">
+						<select class="browser-default" required name="semestre">
+						  <option value="" selected>Seleccione el semestre.</option>
+						  <?php while($semester = $conexion::RunArray($getSemesters)){?>
+							<option value="<?php echo $semester['Id_semestre']?>"><?php echo $semester['semestres'] ?></option>
+						  <?php } ?>
+					   </select>
+					  </div>
+					  <br>
 
-		              <h6><strong> Generacion actual: <?php echo $getinformation->generacion;?></strong></h6>
-		              <div class="input-field">
-		                <select class="browser-default" required name="generacion">
-		                  <option value="" selected>Seleccione la generacion.</option>
-		                  <?php while($generation = $conexion::RunArray($getGenerations)){?>
-		                    <option value="<?php echo $generation['Id_generacion']?>"><?php echo $generation['generacion'] ?></option>
-		                  <?php } ?>
-		                </select>
-		              </div>
-		              <br>
+					  <h6><strong> Generacion actual: <?php echo $getinformation->generacion;?></strong></h6>
+					  <div class="input-field">
+						<select class="browser-default" required name="generacion">
+						  <option value="" selected>Seleccione la generacion.</option>
+						  <?php while($generation = $conexion::RunArray($getGenerations)){?>
+							<option value="<?php echo $generation['Id_generacion']?>"><?php echo $generation['generacion'] ?></option>
+						  <?php } ?>
+						</select>
+					  </div>
+					  <br>
 
-		              <h6><strong>Carrera actual: <?php echo $getinformation->carrera;?></strong></h6>
-		              <div class="input-field">
-		                <select class="browser-default" required name="carrera">
-		                  <option value="" selected>Seleccione la carrera.</option>
-		                  <?php while($degree = $conexion::RunArray($getdegrees2)){?>
-		                  	<option value="<?php echo $degree['Id_carrera']?>"><?php echo $degree['carrera'] ?></option>
-		                  <?php } ?>
-		               </select>
-		             </div>
-		              <br>
+					  <h6><strong>Carrera actual: <?php echo $getinformation->carrera;?></strong></h6>
+					  <div class="input-field">
+						<select class="browser-default" required name="carrera">
+						  <option value="" selected>Seleccione la carrera.</option>
+						  <?php while($degree = $conexion::RunArray($getdegrees2)){?>
+							<option value="<?php echo $degree['Id_carrera']?>"><?php echo $degree['carrera'] ?></option>
+						  <?php } ?>
+					   </select>
+					 </div>
+					  <br>
 
-		              <div class="input-field top-space-medium">
-		                <input type="text" name="correo" class="validate" required value="<?php echo $getinformation->correo_alumno;?>">
+					  <div class="input-field top-space-medium">
+						<input type="text" name="correo" class="validate" required value="<?php echo $getinformation->correo_alumno;?>">
 									  <label for="icon_prefix">Correo</label>
 									</div>
-		              <br>
+					  <br>
 
-		              <div class="input-field top-space-medium">
+					  <div class="input-field top-space-medium">
 									  <input type="text" name="telefono" class="validate" required value="<?php echo $getinformation->telefono_alumno;?>">
 									  <label for="icon_prefix">Telefono</label>
 									</div>
@@ -137,29 +137,29 @@
 
 									<h6><strong></strong> Sexo: <?php echo ($getinformation->sexo_alumno == 'M')? 'Hombre':'Mujer';?></strong></h6>
 									<div class="input-field">
-		                  <select class="browser-default" required name="sexo">
-		                    <option value="" selected>Seleccione el sexo.</option>
-		                    <option value="M">M</option>
-		                    <option value="F">F</option>
-		                  </select>
-		              </div>
-		              <br>
+						  <select class="browser-default" required name="sexo">
+							<option value="" selected>Seleccione el sexo.</option>
+							<option value="M">M</option>
+							<option value="F">F</option>
+						  </select>
+					  </div>
+					  <br>
 
-		              <h6><strong></strong>Fecha de nacimiento: <?php echo $getinformation->fechanac_alumno;?></strong></h6>
+					  <h6><strong></strong>Fecha de nacimiento: <?php echo $getinformation->fechanac_alumno;?></strong></h6>
 									<div class="input-field top-space-medium">
 									  <input type="date" name="fecha_nacimiento" class="validate" required>
 									</div>
 
-		            <div class="file-field input-field">
-		              <div class="btn green">
-		                <span><i class="material-icons">image</i></span>
-		                <input type="file" name="image">
-		              </div>
-		              <div class="file-path-wrapper">
-		                <input class="file-path validate" type="text">
-		              </div>
-		            </div>
-		            <input type="hidden" name="student" value="160sdt">
+					<div class="file-field input-field">
+					  <div class="btn green">
+						<span><i class="material-icons">image</i></span>
+						<input type="file" name="image">
+					  </div>
+					  <div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					  </div>
+					</div>
+					<input type="hidden" name="student" value="160sdt">
 								<div class="card-action" style="border-top: 0px !important;">
 									<div class="row center-align">
 										<div class="col l6 m6 s12"><button name="enviar" type="submit" class="waves-effect waves-light btn blue margin-bottom">Enviar</button></div>
@@ -217,10 +217,10 @@
 	<?php include "../includes/footer.php"; ?>
 	<script type="text/javascript">
   $(document).ready(function(){
-    Matricula.readOnly = true;
-    Student.readOnly = true;
-    User_name.readOnly = true;
-    Any.readOnly = true;
+	Matricula.readOnly = true;
+	Student.readOnly = true;
+	User_name.readOnly = true;
+	Any.readOnly = true;
   })
 </script>
 </body>

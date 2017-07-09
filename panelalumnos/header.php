@@ -47,8 +47,41 @@
 		    </li>
 		</ul>
 
-		<li><a href="family/list.php"><i class="material-icons">domain</i>Mi familia</a></li>
-		<li><a href="friends/list.php"><i class="material-icons">group</i>Mis amigos</a></li>
+		<ul class="collapsible" data-collapsible="accordion">
+		    <li>
+          <a class="collapsible-header">
+            <i class="material-icons">domain</i> Familia
+          </a>
+		      <div class="collapsible-body blue-grey darken-4" style="padding: 0;">
+		      	<ul>
+		      		<li><a href="family/my.php" class="waves-effect white-text active">
+		      			<i class="material-icons white-text">people</i> Mi familia</a>
+		      		</li>
+		      		<li><a href="family/new.php" class="waves-effect white-text active">
+		      			<i class="material-icons white-text">add</i> Familia</a>
+		      		</li>
+		      	</ul>
+		      </div>
+		    </li>
+		</ul>
+
+		<ul class="collapsible" data-collapsible="accordion">
+		    <li>
+          <a class="collapsible-header">
+            <i class="material-icons">person</i> Amigos
+          </a>
+		      <div class="collapsible-body blue-grey darken-4" style="padding: 0;">
+		      	<ul>
+		      		<li><a href="friends/my.php" class="waves-effect white-text active">
+		      			<i class="material-icons white-text">people</i> Mis amigos</a>
+		      		</li>
+		      		<li><a href="friends/new.php" class="waves-effect white-text active">
+		      			<i class="material-icons white-text">add</i> Amigo</a>
+		      		</li>
+		      	</ul>
+		      </div>
+		    </li>
+		</ul>
 
 		<ul class="collapsible" data-collapsible="accordion">
 		    <li>

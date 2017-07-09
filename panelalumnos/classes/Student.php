@@ -48,18 +48,6 @@
 		public function __construct(){
 			$this->db = $this->Conexion();
 
-			if (isset($_POST['enviar']) && isset($_POST['student'])) {
-				$this->Update();
-			}
-
-			if (isset($_POST['enviar']) && isset($_POST['any']) && isset($_POST['user_name']) &&
-				$_POST['user_name'] == $_SESSION['user_name']) {
-				$this->UpdateAccount();
-			}
-
-			if (isset($_POST['enviar']) && !empty($_POST['enviar'])) {
-				$this->UpdateCommitee();
-			}
 		}
 
 		public function Conexion(){
@@ -147,7 +135,6 @@
 					!empty($_POST['correo']) && !empty($_POST['telefono']) && !empty($_POST['sexo']) && 
 					!empty($_POST['capacidad_diferente']) && !empty($_POST['fecha_nacimiento']))
 				{
-					$this->matricula = $this->db->ClearString($_POST['matricula']);
 					$this->nombre = $this->db->ClearString($_POST['nombre']);
 					$this->apellido_paterno = $this->db->ClearString($_POST['apellido_paterno']);
 					$this->apellido_materno = $this->db->ClearString($_POST['apellido_materno']);
@@ -182,7 +169,7 @@
 					$this->errors[] = "Se deben llenar todos las campos.";
 				}
 			}else{
-				$this->errors[] = "A ocurrido un error intente otra vez.isjf";
+				$this->errors[] = "Error desconocido.";
 			}
 			
 		}
@@ -190,29 +177,23 @@
 		public function UpdateCommitee()
 		{
 			if (!isset($_POST['manager']) && !isset($_POST['adviser_1']) && !isset($_POST['adviser_2']) && 
-				!isset($_POST['adviser_3']) && !isset($_POST['alternate']) && !isset($_POST['matricula']) &&
-				!isset($_POST['last_name']) && !isset($_POST['id']) ) {
+				!isset($_POST['adviser_3']) && !isset($_POST['alternate']) ) {
 				$this->errors[] = "Error desconocido.";
 			}elseif (empty($_POST['manager']) && empty($_POST['adviser_1']) && empty($_POST['adviser_2']) && 
-				empty($_POST['adviser_3']) && empty($_POST['alternate']) && empty($_POST['matricula']) &&
-				empty($_POST['last_name']) && empty($_POST['id'])) {
+				empty($_POST['adviser_3']) && empty($_POST['alternate']) ) {
 				$this->errors[] = "Se deben llenar todos las campos.";
 			}elseif (!empty($_POST['manager']) && !empty($_POST['adviser_1']) && !empty($_POST['adviser_2']) && 
-				!empty($_POST['adviser_3']) && !empty($_POST['alternate']) && !empty($_POST['matricula']) &&
-				!empty($_POST['last_name']) && !empty($_POST['id'])){
+				!empty($_POST['adviser_3']) && !empty($_POST['alternate']) ){
 				
 				$this->director = $this->db->ClearString($_POST['manager']);
 				$this->asesor1 = $this->db->ClearString($_POST['adviser_1']);
 				$this->asesor2 = $this->db->ClearString($_POST['adviser_2']);
 				$this->asesor3 = $this->db->ClearString($_POST['adviser_3']);
 				$this->suplente = $this->db->ClearString($_POST['alternate']);
-				$this->matricula = $this->db->ClearString($_POST['matricula']);
-				$this->nombre = $this->db->ClearString($_POST['last_name']);
-				$this->id = $this->db->ClearString($_POST['id']);
 
 				$query = "UPDATE proyecto SET director_proyecto = '{$this->director}', asesor1_proyecto = '{$this->asesor1}', 
 						asesor2_proyecto = '{$this->asesor2}', asesor3_proyecto = '{$this->asesor3}', suplente_proyecto = '{$this->suplente}' 
-						WHERE matricula = '$this->matricula' ";
+						WHERE matricula = '{$this->matricula}' ";
 				$result = $this->db->Query($query);
 				if (!$result) {
 					$this->messages[] = "Los datos fueron actualizados correctamente.";
@@ -240,9 +221,8 @@
 					if ($this->db->GetRowTotal($result) == 1) {
 						$objects = $result->fetch_object();
 						if (password_verify($_POST['password'], $objects->user_password_hash)) {
+
 							$this->user_password_hash = $this->db->ClearString($_POST['new_password']);
-							$this->user_level = $this->db->ClearString($_SESSION['user_level']);
-							$this->id_alumno = $this->db->ClearString($_POST['id_student']);
 
 							$this->user_password_hash = password_hash($this->user_password_hash, PASSWORD_DEFAULT);
 							$query = "UPDATE users set user_password_hash = '{$this->user_password_hash}' WHERE user_name= '{$this->user_name}' AND nivel = '{$this->user_level}' ";

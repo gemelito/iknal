@@ -19,10 +19,22 @@
 	$student = new Student();
 
 
+	if (isset($_POST['enviar']) && !empty($_POST['enviar']) && $_POST['enviar'] == 'account' ) {
+		$student->Set('user_level', $_SESSION['user_level']);
+		$student->Set('user_name', $_SESSION['user_name']);
+		$student->UpdateAccount();
+	}
+
 	$student->Set('user_name', $_SESSION['user_name']);
 	$getinformation = $student->GetInformation();
 	$conexion = $student->Conexion(); 	
 
+	if (isset($_POST['enviar']) && isset($_POST['enviar']) && $_POST['enviar'] == 'student') {
+		$student->Set('matricula', $getinformation->matricula_alumno);
+		$student->Update();
+		$student->Set('user_name', $_SESSION['user_name']);
+		$getinformation = $student->GetInformation();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,7 +51,7 @@
 						<div class="card-content blue-grey-text text-darken-3">
 									<span class="card-title center-align"><strong>Datos Personales</strong></span>
 									<div class="input-field top-space-medium">
-										<input id="Matricula" type="text" name="matricula" class="validate " required value="<?php echo $getinformation->matricula_alumno;?>">
+										<input id="Matricula" readonly type="text" name="matricula" class="validate " required value="<?php echo $getinformation->matricula_alumno;?>">
 										<label for="icon_prefix">Matricula</label>
 									</div>
 									<div class="row">
@@ -159,15 +171,13 @@
 						<input class="file-path validate" type="text">
 					  </div>
 					</div>
-					<input type="hidden" name="student" value="160sdt">
-								<div class="card-action" style="border-top: 0px !important;">
-									<div class="row center-align">
-										<div class="col l6 m6 s12"><button name="enviar" type="submit" class="waves-effect waves-light btn blue margin-bottom">Enviar</button></div>
-										<div class="col l6 m6 s12"><button type="reset" class="waves-effect waves-orange btn-flat">Cancelar</button></div>
-									</div>
-								</div>
-
+						<div class="card-action" style="border-top: 0px !important;">
+							<div class="row center-align">
+								<div class="col l6 m6 s12"><button name="enviar" value="student" type="submit" class="waves-effect waves-light btn blue margin-bottom">Enviar</button></div>
+								<div class="col l6 m6 s12"><button type="reset" class="waves-effect waves-orange btn-flat">Cancelar</button></div>
+							</div>
 						</div>
+					</div>
 					</div>
 				</form>
 			</div>
@@ -198,14 +208,10 @@
 									</div>
 								</div>
 
-								<input type="hidden" id="Student" name="id_student" value="<?php echo $getinformation->id_alumno; ?>">
-								<input type="hidden" id="User_name" name="user_name" value="<?php echo $_SESSION['user_name']; ?>">
-								<input type="hidden" id="Any" name="any" value="<?php echo $_SESSION['user_level']; ?>">
-
 
 							<div class="card-action" style="border-top: 0px !important;">
 								<div class="row center-align">
-									<div class="col l6 m6 s12"><button name="enviar" type="submit" class="waves-effect waves-light btn blue margin-bottom">Enviar</button></div>
+									<div class="col l6 m6 s12"><button name="enviar" type="submit" value="account" class="waves-effect waves-light btn blue margin-bottom">Enviar</button></div>
 										<div class="col l6 m6 s12"><button type="reset" class="waves-effect waves-orange btn-flat">Cancelar</button></div>
 								</div>
 							</div>
@@ -215,13 +221,5 @@
 		</div>
 	<main>
 	<?php include "../includes/footer.php"; ?>
-	<script type="text/javascript">
-  $(document).ready(function(){
-	Matricula.readOnly = true;
-	Student.readOnly = true;
-	User_name.readOnly = true;
-	Any.readOnly = true;
-  })
-</script>
 </body>
 </html>

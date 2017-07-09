@@ -32,7 +32,7 @@ $showalternate = $student->ShowAlternate($getinformation->matricula_alumno);
 <head>
 	<?php
 		include("../includes/head.php");
-		if (isset($_GET['error'])) { ?>
+		if (isset($_GET['error']) && is_string($_GET['error'])) { ?>
 		  <script type="text/javascript">
 		   $(document).ready(function(){
 		     $('.tooltipped').tooltip({delay: 50});

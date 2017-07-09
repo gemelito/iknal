@@ -17,10 +17,10 @@
 	$conexion = $student->Conexion();
 
 	$project = new Project();
-	if(isset($_GET['degree']) && is_string($_GET['degree']) && filter_input(INPUT_GET, 'degree'))
+	if(isset($_GET['degree']) && is_string($_GET['degree']))
 		$project->Set("degree", $_GET['degree']);
 
-	if(isset($_GET['search'])){
+	if(isset($_GET['search']) && is_string($_GET['search'])){
 	  $project->Set("titulo", $_GET['search']);
 	  $getprojects = $project->SearchProjects();
 	}else{

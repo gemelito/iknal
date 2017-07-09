@@ -12,7 +12,10 @@
 	$student->Set("user_name", $_SESSION['user_name']);
 	$getinformation = $student->GetInformation();
 
-	$student->Set("matricula", $getinformation->matricula_alumno);
+	if (isset($_POST['enviar']) && !empty($_POST['enviar']) && $_POST['enviar'] == 'commitee') {
+		$student->Set("matricula", $getinformation->matricula_alumno);
+		$student->UpdateCommitee();
+	}
 
 	$showmanager = $student->ShowManager($getinformation->matricula_alumno);
 	$showadviser_1 = $student->ShowAdviser_1($getinformation->matricula_alumno);
@@ -102,9 +105,7 @@
 									</select>
 								</div>
 								<br>
-								<input type="hidden" name="matricula" id="Matricula" value="<?php echo $getinformation->matricula_alumno; ?>">
-								<input type="hidden" name="last_name" id="Last_name" value="<?php echo $getinformation->apellidop_alumno; ?>">
-								<input type="hidden" name="id" id="Id" value="<?php echo $getinformation->id_alumno; ?>">
+
 							<div class="card-action" style="border-top: 0px !important;">
 								<div class="row center-align">
 									<div class="col l6 m6 s12"><button type="submit" name="enviar" value="commitee" class="waves-effect waves-light btn blue margin-bottom">Enviar</button></div>

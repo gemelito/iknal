@@ -1,5 +1,6 @@
 <?php
 	require_once("../classes/Config.php");
+	require_once("../classes/Resources.php");
 	require_once("../classes/Permission.php");
 	require_once("../classes/Student.php");
 	$permission = new Permission();
@@ -8,7 +9,9 @@
 	$student = new Student();
 	$student->Set("user_name", $_SESSION['user_name']);
 	$getinformation = $student->GetInformation();
-	$getdegrees = $student->GetDegrees();
+
+	$resources = new Resources();
+	$getdegrees = $resources->GetDegrees();
 	$conexion = $student->Conexion();
 
 ?>

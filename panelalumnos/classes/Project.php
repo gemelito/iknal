@@ -43,12 +43,33 @@
 
 		public function Create()
 		{
-			$query = "INSERT INTO proyecto(matricula ,verano_proyecto, lugar_proyecto,titulo_proyecto, areadesarrollo_proyecto, tipo_proyecto,estado_proyecto,director_proyecto,asesor1_proyecto,asesor2_proyecto, suplente_proyecto,modalidad_proyecto,equipo_proyecto) VALUES('{$this->matricula}','{$this->verano}','{$this->lugar}','{$this->titulo}','{$this->area}','{$this->tipo}','{$this->estado}','{$this->director}','{$this->asesor1}','{$this->asesor2}','{$this->suplente}','{$this->modalidad}','{$this->equipo}') ";
-			$result = $this->db->Query($query);
-			if ($result){
-				$this->messages[] = "Se ha agregado el proyecto";
-			}else{
-				$this->errors[] = "No se puedo agregar el proyecto";
+			if (!isset($_POST['titulo']) && !isset($_POST['tipo']) && !isset($_POST['area']) &&
+				!isset($_POST['estado']) && !isset($_POST['verano']) && !isset($_POST['localidad']) &&
+				!isset($_POST['equipo'])) {
+				$this->errors[] = "Error desconocido.";
+			}elseif (empty($_POST['titulo']) && empty($_POST['tipo']) && empty($_POST['area']) &&
+				empty($_POST['estado']) && empty($_POST['verano']) && empty($_POST['localidad']) &&
+				empty($_POST['equipo'])) {
+				$this->errors[] = "Se deben llenar todos los campos.";
+			}elseif (!empty($_POST['titulo']) && !empty($_POST['tipo']) && !empty($_POST['area']) &&
+				!empty($_POST['estado']) && !empty($_POST['verano']) && !empty($_POST['localidad']) &&
+				!empty($_POST['equipo'])) {
+				
+				$this->verano = $this->db->ClearString($_POST['verano']);
+				$this->lugar = $this->db->ClearString($_POST['localidad']);
+				$this->titulo = $this->db->ClearString($_POST['titulo']);
+				$this->area = $this->db->ClearString($_POST['area']);
+				$this->tipo = $this->db->ClearString($_POST['tipo']);
+				$this->estado = $this->db->ClearString($_POST['estado']);
+				$this->equipo = $this->db->ClearString($_POST['equipo']);
+
+				$query = "INSERT INTO proyecto(matricula ,verano_proyecto, lugar_proyecto,titulo_proyecto, areadesarrollo_proyecto, tipo_proyecto,estado_proyecto,modalidad_proyecto,equipo_proyecto) VALUES('{$this->matricula}','{$this->verano}','{$this->lugar}','{$this->titulo}','{$this->area}','{$this->tipo}','{$this->estado}', '{$this->modalidad}','{$this->equipo}') ";
+				$result = $this->db->Query($query);
+				if (!$result){
+					$this->messages[] = "Los datos fueron guardados correctamente.";
+				}else{
+					$this->errors[] = "Los datos no fueron guardados correctamente.";
+				}
 			}
 		}
 

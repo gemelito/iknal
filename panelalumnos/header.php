@@ -3,7 +3,7 @@
   <div class="navbar-fixed">
     <nav class="light-green darken-1">
       <div class="nav-wrapper content">
-        <a class="brand-logo">IKNAL</a>
+        <a class="brand-logo"><img src="../images/logo.png" style="width: 125px;margin-top: -4px;"></a>
         <a class="button-collapse" data-activates="slide-out" href="#">
           <i class="material-icons">menu</i>
         </a>

@@ -13,7 +13,7 @@
     <br> <br> <br>
     <section>
         <div class="row">
-            <div class="col l4 m4 s12 offset-l4">
+            <div class="col l4 m5 s12 offset-l4 offset-m3">
                  <div class="center-align">
                     <img src="images/logo.png" style="width: 200px;">
                 </div>

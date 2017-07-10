@@ -81,7 +81,7 @@
 										<input type="date" name="nacimiento" class="validate">
 									</div>
 								</div>
-								<div class="col s12 center-align top-medium">
+								<div class="col s12 center-align top-medium margin-top-combox">
 									<?php while($kindred = $conexion::RunArray($getkindreds)) {?>
 										<input name="parentesco" type="radio" id="<?php echo $kindred['id_parentesco']; ?>" value="<?php echo $kindred['id_parentesco']; ?>" />
 										<label for="<?php echo $kindred['id_parentesco']; ?>"><?php echo $kindred['parentesco']; ?></label>

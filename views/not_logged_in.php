@@ -38,7 +38,7 @@
                                   <label for="icon_prefix">Usuario</label>
                                 </div>
                                 <div class="input-field col s12">
-                                  <i class="material-icons tiny prefix">phone</i>
+                                  <i class="material-icons tiny prefix">lock</i>
                                   <input id="icon_password" class="validate" type="password" name="user_password" autocomplete="off" required maxlength="15">
                                   <label for="icon_password">Contraseña</label>
                                 </div>
@@ -71,7 +71,7 @@
             <script type="text/javascript">
                 $(document).ready(function(){
                   $('.tooltipped').tooltip({delay: 50});
-                   Materialize.toast('<?php  echo $error;  ?>', 4000000);
+                   Materialize.toast('<?php  echo $error;  ?>', 5000);
                 });
             </script>
         <?php }
@@ -82,7 +82,7 @@
              <script type="text/javascript">
               $(document).ready(function(){
                 $('.tooltipped').tooltip({delay: 50});
-                Materialize.toast('<?php  echo $message;  ?>', 4000000);
+                Materialize.toast('<?php  echo $message;  ?>', 5000);
               });
             </script>
         <?php }

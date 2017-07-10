@@ -159,7 +159,7 @@
 						$this->messages[]= "Los datos fueron actualizados correctamente.";
 						if (!empty($_FILES) && isset($_FILES['image']) && !empty($_FILES['image']['name']))
 						{
-							$this->LoadImage();
+							$this->VerifyImage();
 						}
 					}else {
 						$this->errors[] = "Los datos no fueron actualizados correctamente.";
@@ -245,56 +245,42 @@
 	        
 		}
 
-		public function LoadImage()
+		public function VerifyImage()
 		{
 			$query = "SELECT foto FROM alumno WHERE matricula_alumno = '{$this->matricula}' ";
 			$result = $this->db->QueryReturn($query);
 			$objects = $result->fetch_object();
-			if (!empty($objects->foto))
-			{
-				if (in_array($_FILES['image']['type'], $this->formatos)){
-					if (unlink($this->direccion.$objects->foto))
-					{
-						$this->foto = $_FILES['image']['name'];
-						$subirImagen = move_uploaded_file($_FILES['image']['tmp_name'], $this->direccion.$this->foto);
-						if ($subirImagen)
-						{
-							$query = "UPDATE alumno SET foto='{$this->foto}' WHERE matricula_alumno ='{$this->matricula}'";
-							$result = $this->db->Query($query);
-							if (!$result)
-							{
-								$this->messages[] = "La imagen fue guardo correctamente.";
-							}else{
-								$this->errors[] = "La imagen no fue guardado correctamente.";
-							}
-						}else{
-							$this->errors[] = "La imagen no se pudo subir correctamente.";
-						}
-					}else{
-						$this->errors[] = "Error al actualizar tu imagen";
+			if (!empty($objects->foto)){
+				if (file_exists($this->direccion.$objects->foto)) {
+					if (unlink($this->direccion.$objects->foto)){
+						$this->LoadImage();
 					}
 				}else{
-					$this->errors[] = "A ocurrido un error intente otra vez.";
+					$this->LoadImage();
 				}
 			}else{
-				if (in_array($_FILES['image']['type'], $this->formatos)){
-					$this->foto = $_FILES['image']['name'];
-					$subirImagen = move_uploaded_file($_FILES['image']['tmp_name'], $this->direccion.$this->foto);
-					if ($subirImagen)
-					{
-						$query = "UPDATE alumno SET foto='{$this->foto}' WHERE matricula_alumno ='{$this->matricula}' ";
-						$result = $this->db->Query($query);
-						if (!$result) {
-							$this->messages[] = "La imagen fue guardo correctamente.";
-						}else{
-							$this->errors[] = "La imagen no fue guardado correctamente.";
-						}
+				$this->LoadImage();
+			}
+		}
+
+		public function LoadImage(){
+			if (in_array($_FILES['image']['type'], $this->formatos)){
+				$this->foto = $_FILES['image']['name'];
+				$subirImagen = move_uploaded_file($_FILES['image']['tmp_name'], $this->direccion.$this->foto);
+				if ($subirImagen)
+				{
+					$query = "UPDATE alumno SET foto='{$this->foto}' WHERE matricula_alumno ='{$this->matricula}' ";
+					$result = $this->db->Query($query);
+					if (!$result) {
+						$this->messages[] = "La imagen fue guardo correctamente.";
 					}else{
-						$this->errors[] = "La imagen no se pudo subir correctamente.";
+						$this->errors[] = "La imagen no fue guardado correctamente.";
 					}
 				}else{
-					$this->errors[] = "A ocurrido un error intente otra vez.";
+					$this->errors[] = "La imagen no se pudo subir correctamente.";
 				}
+			}else{
+				$this->errors[] = "A ocurrido un error intente otra vez.";
 			}
 		}
 

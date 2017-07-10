@@ -7,9 +7,6 @@
           <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down" style="margin-right: 300px">
-					<li><a href="index.php">Inicio</a></li>
-					<li><a href="comite.php">comite de tesis</a></li>
-					<li><a href="perfil.php">Perfil</a></li>
           <li>
             <a href="../index.php?logout"><i class="material-icons left">launch</i>Salir</a>
           </li>
@@ -98,11 +95,6 @@
 		    </li>
 		</ul>
 
-		<div class="hide-on-large-only">
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="comite.html">comite de tesis</a></li>
-			<li><a href="perfil.php">Perfil</a></li>
-		</div>
 	</ul>
 
 	<ul id='user-dw' class='dropdown-content'>

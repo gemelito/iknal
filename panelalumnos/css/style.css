@@ -106,7 +106,7 @@ input:not([type]):focus:not([readonly]) + label, input[type=text]:focus:not([rea
 }
 
 .toast {
-  background-color: #7cb342 !important;
+  background-color: #263238 !important;
   word-break: normal;
 }
 

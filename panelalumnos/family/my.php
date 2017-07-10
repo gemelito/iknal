@@ -43,7 +43,7 @@
 					<div class="">
 						<div class="row"><br>
 							<div class="col l6 m6 s12">
-								<a href="new.php" class="waves-effect waves-green btn blue"><i class="material-icons left">add</i> <span>family</span></a>
+								<a href="new.php" class="waves-effect waves-green btn blue"><i class="material-icons left">add</i> <span>familia</span></a>
 							</div>
 						</div>
 						<ul class="collapsible popout blue-grey-text text-darken-3" data-collapsible="accordion">

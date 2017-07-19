@@ -15,7 +15,7 @@ $getinformation = $student->GetInformation();
 $permission->Set("matricula", $getinformation->matricula_alumno);
 $permission->CanCreateProject();
 
-			
+
 
 $resources = new Resources();
 $getdegrees = $resources->GetDegrees();
@@ -25,7 +25,7 @@ $getlocations = $resources->GetLocations();
 $project = new Project();
 
 if (isset($_POST['enviar']) && !empty(['enviar'])  && $_POST['enviar'] == 'project' ) {
-	$project->Set("matricula", $getinformation->matricula);
+	$project->Set("matricula", $getinformation->matricula_alumno);
 	$project->Create();
 }
 

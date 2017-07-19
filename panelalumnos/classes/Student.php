@@ -4,7 +4,7 @@
 	{
 		private $db;
 
-		private $id; 
+		private $id;
 
 		//Fields of the table alumno
 		private $user_name;
@@ -61,13 +61,12 @@
 
 		public function GetInformation()
 		{
-			$query = "SELECT alumno.*, users.*, estado_alumno.*, localidad.*, carrera.*, semestre.*, generacion.*, proyecto.* FROM alumno
+			$query = "SELECT alumno.*, users.*, estado_alumno.*, localidad.*, carrera.*, semestre.*, generacion.* FROM alumno
 					INNER JOIN generacion ON generacion.Id_generacion = alumno.generacion_alumno
 					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
 					INNER JOIN semestre ON semestre.Id_semestre = alumno.semestre_alumno
 					INNER JOIN localidad ON localidad.id_localidad = alumno.originario_alumno
 					INNER JOIN estado_alumno ON estado_alumno.Id_estado_alumno = alumno.estado_alumno
-					INNER JOIN proyecto ON proyecto.matricula = alumno.matricula_alumno
 					INNER JOIN users ON users.Id_alumn = alumno.id_alumno
 					WHERE users.user_name = '{$this->user_name}'";
 			$result = $this->db->QueryReturn($query);
@@ -123,16 +122,16 @@
 
 		public function Update()
 		{
-			if (isset($_POST['matricula']) && isset($_POST['carrera']) && isset($_POST['nombre']) && 
-				isset($_POST['apellido_paterno']) && isset($_POST['apellido_materno']) && 
+			if (isset($_POST['matricula']) && isset($_POST['carrera']) && isset($_POST['nombre']) &&
+				isset($_POST['apellido_paterno']) && isset($_POST['apellido_materno']) &&
 				isset($_POST['estado']) && isset($_POST['generacion']) && isset($_POST['semestre']) &&
-				isset($_POST['localidad']) && isset($_POST['correo']) && isset($_POST['telefono']) && 
+				isset($_POST['localidad']) && isset($_POST['correo']) && isset($_POST['telefono']) &&
 				isset($_POST['sexo']) && isset($_POST['capacidad_diferente']) && isset($_POST['fecha_nacimiento']))
 			{
-				if (!empty($_POST['matricula']) && !empty($_POST['carrera']) && !empty($_POST['nombre']) && 
-					!empty($_POST['apellido_paterno']) && !empty($_POST['apellido_materno']) && !empty($_POST['estado']) && 
-					!empty($_POST['generacion']) && !empty($_POST['semestre']) && !empty($_POST['localidad']) && 
-					!empty($_POST['correo']) && !empty($_POST['telefono']) && !empty($_POST['sexo']) && 
+				if (!empty($_POST['matricula']) && !empty($_POST['carrera']) && !empty($_POST['nombre']) &&
+					!empty($_POST['apellido_paterno']) && !empty($_POST['apellido_materno']) && !empty($_POST['estado']) &&
+					!empty($_POST['generacion']) && !empty($_POST['semestre']) && !empty($_POST['localidad']) &&
+					!empty($_POST['correo']) && !empty($_POST['telefono']) && !empty($_POST['sexo']) &&
 					!empty($_POST['capacidad_diferente']) && !empty($_POST['fecha_nacimiento']))
 				{
 					$this->nombre = $this->db->ClearString($_POST['nombre']);
@@ -164,35 +163,35 @@
 					}else {
 						$this->errors[] = "Los datos no fueron actualizados correctamente.";
 					}
-					
+
 				}else{
 					$this->errors[] = "Se deben llenar todos las campos.";
 				}
 			}else{
 				$this->errors[] = "Error desconocido.";
 			}
-			
+
 		}
 
 		public function UpdateCommitee()
 		{
-			if (!isset($_POST['manager']) && !isset($_POST['adviser_1']) && !isset($_POST['adviser_2']) && 
+			if (!isset($_POST['manager']) && !isset($_POST['adviser_1']) && !isset($_POST['adviser_2']) &&
 				!isset($_POST['adviser_3']) && !isset($_POST['alternate']) ) {
 				$this->errors[] = "Error desconocido.";
-			}elseif (empty($_POST['manager']) && empty($_POST['adviser_1']) && empty($_POST['adviser_2']) && 
+			}elseif (empty($_POST['manager']) && empty($_POST['adviser_1']) && empty($_POST['adviser_2']) &&
 				empty($_POST['adviser_3']) && empty($_POST['alternate']) ) {
 				$this->errors[] = "Se deben llenar todos las campos.";
-			}elseif (!empty($_POST['manager']) && !empty($_POST['adviser_1']) && !empty($_POST['adviser_2']) && 
+			}elseif (!empty($_POST['manager']) && !empty($_POST['adviser_1']) && !empty($_POST['adviser_2']) &&
 				!empty($_POST['adviser_3']) && !empty($_POST['alternate']) ){
-				
+
 				$this->director = $this->db->ClearString($_POST['manager']);
 				$this->asesor1 = $this->db->ClearString($_POST['adviser_1']);
 				$this->asesor2 = $this->db->ClearString($_POST['adviser_2']);
 				$this->asesor3 = $this->db->ClearString($_POST['adviser_3']);
 				$this->suplente = $this->db->ClearString($_POST['alternate']);
 
-				$query = "UPDATE proyecto SET director_proyecto = '{$this->director}', asesor1_proyecto = '{$this->asesor1}', 
-						asesor2_proyecto = '{$this->asesor2}', asesor3_proyecto = '{$this->asesor3}', suplente_proyecto = '{$this->suplente}' 
+				$query = "UPDATE proyecto SET director_proyecto = '{$this->director}', asesor1_proyecto = '{$this->asesor1}',
+						asesor2_proyecto = '{$this->asesor2}', asesor3_proyecto = '{$this->asesor3}', suplente_proyecto = '{$this->suplente}'
 						WHERE matricula = '{$this->matricula}' ";
 				$result = $this->db->Query($query);
 				if (!$result) {
@@ -228,7 +227,7 @@
 							$query = "UPDATE users set user_password_hash = '{$this->user_password_hash}' WHERE user_name= '{$this->user_name}' AND nivel = '{$this->user_level}' ";
 							$result = $this->db->Query($query);
 							if (!$result) {
-								
+
 								$this->doLogout();
 							}else{
 								$this->errors[] = "La contraseña no fue actualizada correctamente.";
@@ -242,7 +241,7 @@
 			}else{
 				$this->errors[] = "Error desconocido intent otra vez.";
 			}
-	        
+
 		}
 
 		public function VerifyImage()

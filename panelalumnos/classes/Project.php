@@ -54,7 +54,7 @@
 			}elseif (!empty($_POST['titulo']) && !empty($_POST['tipo']) && !empty($_POST['area']) &&
 				!empty($_POST['estado']) && !empty($_POST['verano']) && !empty($_POST['localidad']) &&
 				!empty($_POST['equipo'])) {
-				
+
 				$this->verano = $this->db->ClearString($_POST['verano']);
 				$this->lugar = $this->db->ClearString($_POST['localidad']);
 				$this->titulo = $this->db->ClearString($_POST['titulo']);
@@ -63,7 +63,8 @@
 				$this->estado = $this->db->ClearString($_POST['estado']);
 				$this->equipo = $this->db->ClearString($_POST['equipo']);
 
-				$query = "INSERT INTO proyecto(matricula ,verano_proyecto, lugar_proyecto,titulo_proyecto, areadesarrollo_proyecto, tipo_proyecto,estado_proyecto,modalidad_proyecto,equipo_proyecto) VALUES('{$this->matricula}','{$this->verano}','{$this->lugar}','{$this->titulo}','{$this->area}','{$this->tipo}','{$this->estado}', '{$this->modalidad}','{$this->equipo}') ";
+				$query = "INSERT INTO proyecto(matricula ,verano_proyecto, lugar_proyecto,titulo_proyecto, areadesarrollo_proyecto, tipo_proyecto,estado_proyecto,equipo_proyecto)
+									VALUES('{$this->matricula}','{$this->verano}','{$this->lugar}','{$this->titulo}','{$this->area}','{$this->tipo}','{$this->estado}','{$this->equipo}') ";
 				$result = $this->db->Query($query);
 				if (!$result){
 					$this->messages[] = "Los datos fueron guardados correctamente.";
@@ -126,7 +127,7 @@
 					INNER JOIN alumno ON alumno.matricula_alumno = proyecto.matricula
 					INNER JOIN carrera ON carrera.Id_carrera = alumno.carrera_alumno
 					INNER JOIN localidad ON localidad.id_localidad = proyecto.lugar_proyecto
-					WHERE carrera.carrera = '{$this->degree}'";
+					WHERE carrera.carrera = '{$this->degree}' ";
 			$result = $this->db->QueryReturn($query);
 			if ($result) {
 				return $result;

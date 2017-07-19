@@ -86,9 +86,9 @@
 			$query = "UPDATE proyecto SET matricula='{$this->matricula}', verano_proyecto='{$this->verano}', lugar_proyecto='{$this->lugar}', titulo_proyecto='{$this->titulo}', areadesarrollo_proyecto='{$this->area}', tipo_proyecto='{$this->tipo}', estado_proyecto='{$this->estado}', equipo_proyecto='{$this->equipo}' WHERE  matricula='{$this->matricula}' ";
 			$result = $this->db->Query($query);
 			if (!$result){
-				$this->messages[] = "Los datos se han actualizado correctamente";
+				$this->messages[] = "Los datos se han actualizado correctamente.";
 			}else{
-				$this->errors[] = "Los datos no fueron actualizados correctamente";
+				$this->errors[] = "Los datos no fueron actualizados correctamente.";
 			}
 		}
 
@@ -97,9 +97,9 @@
 			$query = "SELECT * FROM proyecto WHERE titulo_proyecto = '$this->titulo_proyecto' AND matricula = '{$this->matricula}' ";
 			$result = $this->db->QueryReturn($query);
 			if ($result){
-				$this->messages[] = "Se ha eliminado el proyecto";
+				$this->messages[] = "Se ha eliminado el proyecto.";
 			}else{
-				$this->errors[] = "No se puedo elimnar el proyecto";
+				$this->errors[] = "No se puedo elimnar el proyecto.";
 			}
 		}
 

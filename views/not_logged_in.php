@@ -1,6 +1,6 @@
 <!-- login form box -->
 <html lang="es">
-    <head> 
+    <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta name="theme-color" content="#7cb342">
@@ -20,11 +20,11 @@
                 <div class="card" style="border-radius: 10px;">
                     <div class="card-content blue-grey-text text-darken-3">
                         <span class="card-title center-align">Sistema de tutoría IKNAL</span>
-                       
-                        <form method="post" action="index.php" name="loginform">      
+
+                        <form method="post" action="index.php" name="loginform">
                             <!--label for="login_input_username"></label>
                             <input id="login_input_username" placeholder="Usuario" class="login_input" type="text" name="user_name" maxlength="15" required />
-                           
+
                             <label for="login_input_password"></label>
                             <input id="login_input_password" placeholder="Contraseña" class="login_input" type="password" name="user_password" autocomplete="off" required maxlength="15"/>
                             <br />
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="input-field center-align">
-                                <button type="submit"  name="login"  class="waves-effect waves-light btn light-green darken-1">Accesar</button>
+                                <button type="submit"  name="login"  class="waves-effect waves-light btn light-green darken-1" style="width:100%;">Accesar</button>
                             </div>
                         </form>
 
@@ -53,7 +53,7 @@
 
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </section>
